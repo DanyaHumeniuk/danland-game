@@ -1,4 +1,4 @@
-import map from "../assets/map.jpg.avif"
+import map from "../assets/map.jpg"
 
 const Hero = () => {
   return (
