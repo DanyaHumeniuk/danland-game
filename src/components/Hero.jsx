@@ -1,4 +1,4 @@
-import map from "../assets/map.jpg"
+import map from "../assets/Map2.jpg"
 import avatar from "../assets/fred.jpg"
 
 const Hero = () => {
