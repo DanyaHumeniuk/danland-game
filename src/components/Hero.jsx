@@ -1,29 +1,65 @@
+import { useState } from "react";
 import map from "../assets/Map2.jpg"
 import avatar from "../assets/fred.png"
 
 const Hero = () => {
+
+  const [position, setPosition] = useState({top: "15%", left: "25%"});
+
+  const moveAvatar = (top, left) => {
+    setPosition({ top, left });
+  };
+
+
   return (
     <div className="flex justify-center items-center h-screen w-screen">
         <div className="relative w-full max-w-lg aspect-square rounded-xl bg-cover bg-center" style={{ backgroundImage: `url(${map})` }}>
-            <div className="absolute top-[17%] left-[27%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm">
+            <div 
+              className="absolute top-[17%] left-[27%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              onClick={() => moveAvatar("15%", "25%")}
+            >
             A
             </div>
-            <div className="absolute top-[51%] left-[17%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm">
+            <div 
+              className="absolute top-[51%] left-[17%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              onClick={() => moveAvatar("49%", "15%")}
+            >
             B
             </div>
-            <div className="absolute top-[23%] left-[62%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm">
+            <div 
+              className="absolute top-[23%] left-[62%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              onClick={() => moveAvatar("21%", "60%")}
+
+            >
             C
             </div>
-            <div className="absolute top-[81%] left-[35%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm">
+            <div 
+              className="absolute top-[81%] left-[35%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              onClick={() => moveAvatar("79%", "33%")}
+
+            >
             D
             </div>
-            <div className="absolute top-[69%] left-[80%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm">
+            <div 
+              className="absolute top-[69%] left-[80%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              onClick={() => moveAvatar("67%", "78%")}
+
+            >
             E
             </div>
             <img 
               src={avatar} 
               alt="Avatar" 
-              className="absolute top-[15%] left-[25%] w-10 h-10 sm:w-14 sm:h-14 rounded-full scale-150"
+              className="absolute scale-150" 
+              style={{
+                top: position.top,
+                left: position.left,
+                width: "50px",
+                height: "50px",
+                borderRadius: "50%",
+                transition: "top 0.3s ease, left 0.3s ease",
+              }}
+              // top-[15%] left-[25%] w-10 h-10 sm:w-14 sm:h-14 rounded-full scale-150"
             />
 
         </div>
