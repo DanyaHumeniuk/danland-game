@@ -1,4 +1,5 @@
 import map from "../assets/map.jpg"
+import avatar from "../assets/fred.jpg"
 
 const Hero = () => {
   return (
@@ -19,6 +20,12 @@ const Hero = () => {
             <div className="absolute top-[69%] left-[80%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm">
             E
             </div>
+            <img 
+              src={avatar} 
+              alt="Avatar" 
+              className="absolute top-[15%] left-[25%] w-10 h-10 sm:w-14 sm:h-14 rounded-full shadow-lg"
+            />
+
         </div>
     </div>
   )
