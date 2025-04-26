@@ -1,5 +1,5 @@
 import map from "../assets/Map2.jpg"
-import avatar from "../assets/fred.jpg"
+import avatar from "../assets/fred.png"
 
 const Hero = () => {
   return (
@@ -23,7 +23,7 @@ const Hero = () => {
             <img 
               src={avatar} 
               alt="Avatar" 
-              className="absolute top-[15%] left-[25%] w-10 h-10 sm:w-14 sm:h-14 rounded-full shadow-lg"
+              className="absolute top-[15%] left-[25%] w-10 h-10 sm:w-14 sm:h-14 rounded-full scale-150"
             />
 
         </div>
