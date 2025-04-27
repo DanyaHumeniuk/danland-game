@@ -4,7 +4,7 @@ import avatar from "../assets/fred.png"
 
 const Hero = ({ setShowNavbar }) => {
 
-  const [position, setPosition] = useState({top: "15%", left: "25%"});
+  const [position, setPosition] = useState({top: "20%", left: "30%"});
   const [pokemons, setPokemons] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [isChoosing, setIsChoosing] = useState(true);
@@ -55,33 +55,33 @@ const Hero = ({ setShowNavbar }) => {
         <div className="relative w-full max-w-lg aspect-square rounded-xl bg-cover bg-center" style={{ backgroundImage: `url(${map})` }}>
             <div 
               className="absolute top-[17%] left-[27%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
-              onClick={() => moveAvatar("15%", "25%")}
+              onClick={() => moveAvatar("20%", "30%")}
             >
             A
             </div>
             <div 
               className="absolute top-[51%] left-[17%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
-              onClick={() => moveAvatar("51%", "17%")}
+              onClick={() => moveAvatar("54%", "20%")}
             >
             B
             </div>
             <div 
               className="absolute top-[23%] left-[62%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
-              onClick={() => moveAvatar("23%", "62%")}
+              onClick={() => moveAvatar("25%", "65%")}
 
             >
             C
             </div>
             <div 
               className="absolute top-[81%] left-[35%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
-              onClick={() => moveAvatar("81%", "35%")}
+              onClick={() => moveAvatar("83%", "38%")}
 
             >
             D
             </div>
             <div 
               className="absolute top-[69%] left-[80%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
-              onClick={() => moveAvatar("69%", "80%")}
+              onClick={() => moveAvatar("71%", "83%")}
 
             >
             E
