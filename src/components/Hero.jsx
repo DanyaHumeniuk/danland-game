@@ -14,18 +14,31 @@ const Hero = ({ setShowNavbar }) => {
   };
 
   useEffect(() => {
-    // Fetch first 6 Pokémon
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=6")
-      .then(response => response.json())
-      .then(async data => {
-        const promises = data.results.map(pokemon =>
-          fetch(pokemon.url).then(res => res.json())
+    const getRandomIds = (count, max = 898) => {
+      const ids = new Set();
+      while (ids.size < count) {
+        const randId = Math.floor(Math.random() * max) + 1;
+        ids.add(randId);
+      }
+      return Array.from(ids);
+    };
+  
+    const fetchRandomPokemons = async () => {
+      const randomIds = getRandomIds(6);
+      try {
+        const promises = randomIds.map(id =>
+          fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(res => res.json())
         );
         const detailedPokemons = await Promise.all(promises);
         setPokemons(detailedPokemons);
-      })
-      .catch(error => console.error('Error fetching pokemons:', error));
+      } catch (error) {
+        console.error("Error fetching random pokemons:", error);
+      }
+    };
+  
+    fetchRandomPokemons();
   }, []);
+  
 
   if (isChoosing) {
     return (
@@ -54,33 +67,33 @@ const Hero = ({ setShowNavbar }) => {
     <div className="flex justify-center items-center h-screen w-screen">
         <div className="relative w-full max-w-lg aspect-square rounded-xl bg-cover bg-center" style={{ backgroundImage: `url(${map})` }}>
             <div 
-              className="absolute top-[17%] left-[27%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              className="absolute top-[17%] left-[27%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
               onClick={() => moveAvatar("20%", "30%")}
             >
             A
             </div>
             <div 
-              className="absolute top-[51%] left-[17%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              className="absolute top-[51%] left-[17%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
               onClick={() => moveAvatar("54%", "20%")}
             >
             B
             </div>
             <div 
-              className="absolute top-[23%] left-[62%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              className="absolute top-[23%] left-[62%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
               onClick={() => moveAvatar("25%", "65%")}
 
             >
             C
             </div>
             <div 
-              className="absolute top-[81%] left-[35%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              className="absolute top-[81%] left-[35%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
               onClick={() => moveAvatar("83%", "38%")}
 
             >
             D
             </div>
             <div 
-              className="absolute top-[69%] left-[80%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm"
+              className="absolute top-[69%] left-[80%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
               onClick={() => moveAvatar("71%", "83%")}
 
             >
@@ -94,8 +107,8 @@ const Hero = ({ setShowNavbar }) => {
                     style={{
                     top: position.top,
                     left: position.left,
-                    width: "50px",
-                    height: "50px",
+                    width: "100px",
+                    height: "100px",
                     borderRadius: "50%",
                     transform: "translate(-50%, -50%)",
                     transition: "top 0.5s ease, left 0.5s ease",
