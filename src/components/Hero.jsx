@@ -8,9 +8,18 @@ const Hero = ({ setShowNavbar }) => {
   const [pokemons, setPokemons] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [isChoosing, setIsChoosing] = useState(true);
+  const [popupText, setPopupText] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   const moveAvatar = (top, left) => {
     setPosition({ top, left });
+  };
+
+  const handleMove = (top, left, locationName) => {
+    moveAvatar(top, left);
+    setPopupText(`Welcome to ${locationName}!`);
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 5000);
   };
 
   useEffect(() => {
@@ -66,35 +75,40 @@ const Hero = ({ setShowNavbar }) => {
   return (
     <div className="flex justify-center items-center h-screen w-screen">
         <div className="relative w-full max-w-lg aspect-square rounded-xl bg-cover bg-center" style={{ backgroundImage: `url(${map})` }}>
+        {showPopup && (
+      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-yellow-200 text-black px-4 py-2 rounded shadow-lg z-50">
+        {popupText}
+      </div>
+      )}
             <div 
               className="absolute top-[17%] left-[27%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
-              onClick={() => moveAvatar("20%", "30%")}
+              onClick={() => handleMove("20%", "30%", "the House")}
             >
             A
             </div>
             <div 
               className="absolute top-[51%] left-[17%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
-              onClick={() => moveAvatar("54%", "20%")}
+              onClick={() => handleMove("54%", "20%", "Lake Ireylo")}
             >
             B
             </div>
             <div 
               className="absolute top-[23%] left-[62%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
-              onClick={() => moveAvatar("25%", "65%")}
+              onClick={() => handleMove("25%", "65%", "the Snowy Mountains")}
 
             >
             C
             </div>
             <div 
               className="absolute top-[81%] left-[35%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
-              onClick={() => moveAvatar("83%", "38%")}
+              onClick={() => handleMove("83%", "38%", "Paradise Park")}
 
             >
             D
             </div>
             <div 
               className="absolute top-[69%] left-[80%] flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white text-black font-bold text-xs sm:text-sm cursor-pointer"
-              onClick={() => moveAvatar("71%", "83%")}
+              onClick={() => handleMove("71%", "83%", "the Chest of Dreams")}
 
             >
             E
@@ -115,7 +129,6 @@ const Hero = ({ setShowNavbar }) => {
                     }}
                 />
             )}
-
         </div>
     </div>
   )
