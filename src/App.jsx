@@ -1,6 +1,7 @@
 import Hero from "./components/Hero"
 import Navbar from "./components/Navbar"
 import { useState } from "react"
+import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -14,6 +15,7 @@ const App = () => {
         {showNavbar && <Navbar />}
         <Hero setShowNavbar={setShowNavbar} />
       </div>
+      <Analytics />
     </div>
   )
 }
